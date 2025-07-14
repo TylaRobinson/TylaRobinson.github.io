@@ -1,0 +1,13 @@
+{
+	"name": "Muffin King",
+	"short_name": "Muffin King", 
+	"start_url": "front.html",
+	"display": "standalone",
+	"icons": [
+		{
+		"src": "images/512.png",
+		"type": "image/png",
+		"sizes": "512x512"
+		}
+	]
+}

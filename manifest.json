@@ -1,7 +1,7 @@
 {
 	"name": "Muffin King",
 	"short_name": "Muffin King", 
-	"start_url": "front.html",
+	"start_url": "index.html",
 	"display": "standalone",
 	"icons": [
 		{

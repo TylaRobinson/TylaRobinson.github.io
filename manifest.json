@@ -1,6 +1,6 @@
 {
-	"name": "Muffin King",
-	"short_name": "Muffin King", 
+	"name": "My Savings Buddy",
+	"short_name": "My Savings Buddy", 
 	"start_url": "index.html",
 	"display": "standalone",
 	"icons": [

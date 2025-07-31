@@ -4,16 +4,31 @@
 <head>
 	<title>  </title>
 	<link rel ="manifest" href="manifest.json"/>
+	<style>
+	body {
+		margin: 0px;
+		background-color: #45BBBD;
+	}
+	
+	#SavingsGoal{
+		background-color: #red;
+	}
+		
+		
+	</style>
+	
+	
+	
 	
 </head>
 <body>
-	<form>
-		<label for="savings">Savings Goal:</label>
-		<input type="number" id="savings" name="savings" min="100">
-	</form>
+	<div class = "SavingsGoal">
+		<input class="storage" type="number">
+		<p class="savings">Savings Goal</p>
+		<button class="button">Save</button>
+	</div>
 	
 	
-	
-	
+	<script src="script.js"></script>
 </body>
 </html>

@@ -22,11 +22,28 @@
 	
 </head>
 <body>
-	<div id = "SavingsGoal">
+	<form id="savingsForm">
+		<label>What is your savings goal? $<input type="number" id="goalAmount" required></label> <br><br>
+		<label>What is this money for? <input type="text" id="goalName" required></label> <br><br>
+		<label>When do you aim to have this money by? <input type="date" id="goalDate" required></label> <br><br>
+		<label>How often do you earn money?
+			<select id="freqeuency">
+				<option value="weekly">Weekly</option>
+				<option value="fortnightly">Fortnightly</option>
+				<option value="monthly">Monthly</option>
+			</select>
+		</label><br><br>
+		<button type ="submit">Calculate</button>
+	</form>
+	
+	<div id="result">
+	</div>
+	
+	<!-- <div id = "SavingsGoal">
 		<button type="button" id="saveButton">Save Goal</button>
 		<input type ="number" id="goalInput">
-		<p> My Savings Goal: <span id="goal-spot"> BLANK </span> </p>
-	</div>
+		<p> My Savings Goal: $ <span id="goal-spot"> ? </span> </p>
+	</div> -->
 	
 	
 	<script src="script.js"></script>

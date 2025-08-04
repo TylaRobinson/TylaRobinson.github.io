@@ -5,15 +5,15 @@ document.getElementById("savingsForm").addEventListener("submit", function (e) {
 	localStorage.setItem("goalAmount", goalAmount);
 	const goalName = document.getElementById("goalName").value;
 	localStorage.setItem("goalName", goalName);
-	const targetDate = new Date (document.getElementById("targetDate").value);
-	localStorage.setItem("targetDate", targetDate);
+	const goalDate = new Date (document.getElementById("goalDate").value);
+	localStorage.setItem("goalDate", goalDate.toISOString());
 	const frequency = document.getElementById("frequency").value
 	localStorage.setItem("frequency", frequency);
 
 	const today = new Date();
-	const timeDiff = targetDate - today;
+	const timeDiff = goalDate - today;
 	
-	if (timeDiff <= 0 || isNan(goalAmount)) {
+	if (timeDiff <= 0 || isNaN(goalAmount)) {
 		document.getElementById("result").innerHTML = "<strong>Please enter a valid future date and amount. </strong>";
 		return;
 	}

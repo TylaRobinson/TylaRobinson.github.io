@@ -10,7 +10,7 @@
 		background-color: #45BBBD;
 	}
 	
-	#SavingsGoal{
+	.SavingsGoal{
 		background-color: #red;
 	}
 		
@@ -22,10 +22,10 @@
 	
 </head>
 <body>
-	<div class = "SavingsGoal">
-		<input class="storage" type="number">
-		<p class="savings">Savings Goal</p>
-		<button class="button">Save</button>
+	<div id = "SavingsGoal">
+		<button type="button" id="saveButton">Save Goal</button>
+		<input type ="number" id="goalInput">
+		<p> My Savings Goal: <span id="goal-spot"> BLANK </span> </p>
 	</div>
 	
 	

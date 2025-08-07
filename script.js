@@ -23,12 +23,12 @@ document.getElementById("savingsForm").addEventListener("submit", function (e) {
 	
 	if (frequency === "weekly") periods = weeks;
 	else if (frequency === "fortnightly") periods = Math.ceil(weeks/2);
-	else if (frequency === "monthly") periods = Math.ceil((targetDate.getFullYear() - today.getFullYear()) *12 + targetDate.getMonth() - today.getMonth());
+	else if (frequency === "monthly") periods = Math.ceil((goalDate.getFullYear() - today.getFullYear()) *12 + goalDate.getMonth() - today.getMonth());
 	
 	const perPeriod = goalAmount / periods; 
 	
 	document.getElementById("result").innerHTML = 
-		`<strong> To save $${goalAmount.toFixed(2)} for "${goalName || "your goal"}" by ${targetDate.toDateString()}, <br>
+		`<strong> To save $${goalAmount.toFixed(2)} for "${goalName || "your goal"}" by ${goalDate.toDateString()}, <br>
 		You need to save $${perPeriod.toFixed(2)} every ${frequency}.</strong>`;
 });
 

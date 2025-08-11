@@ -57,6 +57,7 @@
 			Paycheck Source: 
 			<input type="text" name="paycheckSource" required>
 		</label>
+		<button type = "button" class="removePaycheckBtn"> Remove this paycheck </button> <br><br>
 		`;
 		paychecksContainer.appendChild(newPaycheckRow);
 	}

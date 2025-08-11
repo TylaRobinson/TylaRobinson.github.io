@@ -1,41 +1,89 @@
-document.getElementById("savingsForm").addEventListener("submit", function (e) {
-	e.preventDefault();
-	 
-	const goalAmount = parseFloat(document.getElementById("goalAmount").value);
-	localStorage.setItem("goalAmount", goalAmount);
-	const goalName = document.getElementById("goalName").value;
-	localStorage.setItem("goalName", goalName);
-	const goalDate = new Date (document.getElementById("goalDate").value);
-	localStorage.setItem("goalDate", goalDate.toISOString());
-	const frequency = document.getElementById("frequency").value
-	localStorage.setItem("frequency", frequency);
+	//Savings Goal Feature
+	document.getElementById("savingsForm").addEventListener("submit", function (e) {
+		e.preventDefault();
+		 
+		const goalAmount = parseFloat(document.getElementById("goalAmount").value);
+		localStorage.setItem("goalAmount", goalAmount);
+		const goalName = document.getElementById("goalName").value;
+		localStorage.setItem("goalName", goalName);
+		const goalDate = new Date (document.getElementById("goalDate").value);
+		localStorage.setItem("goalDate", goalDate.toISOString());
+		const frequency = document.getElementById("frequency").value
+		localStorage.setItem("frequency", frequency);
+		//saves to local storage
 
-	const today = new Date();
-	const timeDiff = goalDate - today;
-	
-	if (timeDiff <= 0 || isNaN(goalAmount)) {
-		document.getElementById("result").innerHTML = "<strong>Please enter a valid future date and amount. </strong>";
-		return;
+		const today = new Date();
+		const timeDiff = goalDate - today;
+		
+		if (timeDiff <= 0 || isNaN(goalAmount)) {
+			document.getElementById("result").innerHTML = "<strong>Please enter a valid future date and amount. </strong>";
+			return;
+		}
+		//checks for innacurate inputs
+		
+		
+		const weeks = Math.ceil(timeDiff / (1000 * 60 * 60 * 24 * 7));
+		let periods;
+		//calucaltes periods
+		
+		
+		if (frequency === "weekly") periods = weeks;
+		else if (frequency === "fortnightly") periods = Math.ceil(weeks/2);
+		else if (frequency === "monthly") periods = Math.ceil((goalDate.getFullYear() - today.getFullYear()) *12 + goalDate.getMonth() - today.getMonth());
+
+		const perPeriod = goalAmount / periods; 
+		//the full calculation
+		document.getElementById("result").innerHTML = 
+			`<strong> To save $${goalAmount.toFixed(2)} for "${goalName || "your goal"}" by ${goalDate.toDateString()}, <br>
+			You need to save $${perPeriod.toFixed(2)} ${frequency}.</strong>`;
+		//output
+	});
+
+	//Wage Spender Feature
+	const paychecksContainer = document.getElementById('paychecks-container');
+	const addPaycheckBtn = document.getElementById('addPaycheckBtn');
+	const spendingsForm = document.getElementById('spendingsForm');
+
+	function addPaycheckRow(){
+		const newPaycheckRow = document.createElement('div');
+		newPaycheckRow.className = 'paycheck-row';
+		newPaycheckRow.innerHTML = `
+		<label> 
+			Paycheck Amount:
+			<input type="number" name="paycheckAmount" step="0.01" required>
+		</label>
+		<label>
+			Paycheck Source: 
+			<input type="text" name="paycheckSource" required>
+		</label>
+		`;
+		paychecksContainer.appendChild(newPaycheckRow);
 	}
-	
-	const weeks = Math.ceil(timeDiff / (1000 * 60 * 60 * 24 * 7));
-	let periods;
-	
-	if (frequency === "weekly") periods = weeks;
-	else if (frequency === "fortnightly") periods = Math.ceil(weeks/2);
-	else if (frequency === "monthly") periods = Math.ceil((goalDate.getFullYear() - today.getFullYear()) *12 + goalDate.getMonth() - today.getMonth());
-	
-	const perPeriod = goalAmount / periods; 
-	
-	document.getElementById("result").innerHTML = 
-		`<strong> To save $${goalAmount.toFixed(2)} for "${goalName || "your goal"}" by ${goalDate.toDateString()}, <br>
-		You need to save $${perPeriod.toFixed(2)} every ${frequency}.</strong>`;
-});
+	//allows users to create new paycheck row
 
+	addPaycheckBtn.addEventListener('click', addPaycheckRow);
+	//listening for add another paycheck button to be clicked
 
-//document.getElementById("saveButton").addEventListener("click", saveGoal);
-//function saveGoal(){
-//	const myGoal = document.getElementById("goalInput").value
-//	localStorage.setItem("goal", myGoal);
-//	document.getElementById("goal-spot").innerHTML = myGoal
-//}
+	spendingsForm.addEventListener('submit', (event) => {
+		event.preventDefault();
+		
+		const paychecks = [];
+		const paycheckRows = paychecksContainer.querySelectorAll('.paycheck-row');
+		
+		paycheckRows.forEach(row => {
+			const amountInput = row.querySelector('input[name="paycheckAmount"]');
+			const sourceInput = row.querySelector('input[name="paycheckSource"]');
+
+			const amount = parseFloat(amountInput.value);
+			const source = sourceInput.value;
+			
+			if(!isNaN(amount) && source) {
+				paychecks.push({
+					amount: amount,
+					source: source
+				});
+			}
+		});
+		
+		localStorage.setItem('paychecks', JSON.stringify(paychecks));
+		});

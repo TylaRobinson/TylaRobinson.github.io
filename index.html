@@ -11,7 +11,7 @@
 	}
 	
 	.SavingsGoal{
-		background-color: #red;
+		
 	}
 		
 		
@@ -22,6 +22,7 @@
 	
 </head>
 <body>
+	<div id = "SavingsGoal">
 	<form id="savingsForm">
 		<label>What is your savings goal? $<input type="number" id="goalAmount" required></label> <br><br>
 		<label>What is this money for? <input type="text" id="goalName" required></label> <br><br>
@@ -35,16 +36,32 @@
 		</label><br><br>
 		<button type ="submit">Calculate</button>
 	</form>
-	
-	<div id="result">
 	</div>
 	
-	<!-- <div id = "SavingsGoal">
-		<button type="button" id="saveButton">Save Goal</button>
-		<input type ="number" id="goalInput">
-		<p> My Savings Goal: $ <span id="goal-spot"> ? </span> </p>
-	</div> -->
+	<div id="result">
 	
+	</div>
+<br><br><br><br>
+	<div id = "WageSpender">
+	<form id="spendingsForm">
+		<div id= "paychecks-container">
+			<div class ="paycheck-row">
+				<label> 
+					Paycheck Amount: 
+					<input type ="number" name="paycheckAmount" step="0.01" required>
+				</label>
+				<label>
+					Paycheck Source:
+					<input type="text" name="paycheckSource" required>
+				</label>
+			</div>
+		</div>
+		
+	<button type ="button" id="addPaycheckBtn">Add another paycheck</button><br><br>
+	<button type="submit">Calculate</button>
+	</form>
+</div>
+
 	
 	<script src="script.js"></script>
 </body>

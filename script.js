@@ -40,6 +40,8 @@
 	});
 
 //Wage Spender Feature
+	
+	//paycheck part
 	const paychecksContainer = document.getElementById('paychecks-container');
 	const addPaycheckBtn = document.getElementById('addPaycheckBtn');
 	const spendingsForm = document.getElementById('spendingsForm');
@@ -57,7 +59,7 @@
 			Paycheck Source: 
 			<input type="text" name="paycheckSource" required>
 		</label>
-		<button type = "button" class="removePaycheckBtn"> Remove this paycheck </button> <br><br>
+		<button type = "button" class="removePaycheckBtn"> Remove a paycheck </button> <br><br>
 		`;
 		paychecksContainer.appendChild(newPaycheckRow);
 	}
@@ -85,6 +87,7 @@
 		}
 	});
 
+	//gathering, validating and saving paycheck data to local storage
 	spendingsForm.addEventListener('submit', (event) => {
 		event.preventDefault();
 		
@@ -108,3 +111,70 @@
 		
 		localStorage.setItem('paychecks', JSON.stringify(paychecks));
 		});
+
+	//costs part
+	const costsContainer = document.getElementById('costs-container');
+	const addCostBtn = document.getElementById('addCostBtn');
+
+	//allows users to add another cost
+	function addCostRow(){
+		const newCostRow = document.createElement('div');
+		newCostRow.className = 'cost-row';
+		newCostRow.innerHTML = `
+		<label> 
+			Cost Amount: $
+			<input type="number" name="costAmount" step="0.01" required>
+		</label>
+		<label>
+			Cost Name: 
+			<input type="text" name="costName" required>
+		</label>
+		<button type = "button" class="removeCostBtn"> Remove a cost </button> <br><br>
+		`;
+		costsContainer.appendChild(newCostRow);
+	}
+	
+	//allows users to remove a cost row
+	function removeCostRow(costRow){
+		const costRows = costsContainer.querySelectorAll('.cost-row');
+		if (costRows.length >1){
+				costRow.remove();
+		} else { 
+				alert("You must have at least one cost row!");
+		}
+	}
+	//listening for add cost button to be clicked
+	addCostBtn.addEventListener('click', addCostRow);
+
+	costsContainer.addEventListener('click', (event) => {
+		if (event.target.classList.contains('removeCostBtn')) {
+			const costRow = event.target.closest('.cost-row');
+			removeCostRow(costRow);
+		}
+	});
+
+	//gathering, validating and saving costs data to local storage
+	spendingsForm.addEventListener('submit', (event) => {
+		event.preventDefault();
+		
+		const costs = [];
+		const costRows = costsContainer.querySelectorAll('.cost-row');
+		
+		costRows.forEach(row => {
+			const amountInput = row.querySelector('input[name="costAmount"]');
+			const nameInput = row.querySelector('input[name="costName"]');
+
+			const amount = parseFloat(amountInput.value);
+			const name = nameInput.value;
+			
+			if(!isNaN(amount) && name) {
+				costs.push({
+					amount: amount,
+					name: name
+				});
+			}
+		});
+		
+		localStorage.setItem('costs', JSON.stringify(costs));
+		});
+	

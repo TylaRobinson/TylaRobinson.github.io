@@ -41,13 +41,14 @@
 	<div id="result">
 	
 	</div>
-<br><br><br><br>
+<br><br><br><br><br><br><br><br>
 	<div id = "WageSpender">
 	<form id="spendingsForm">
+		<!--input paychecks-->
 		<div id= "paychecks-container">
 			<div class ="paycheck-row" data-id="1">
 				<label> 
-					Paycheck Amount: 
+					Paycheck Amount: $ 
 					<input type ="number" name="paycheckAmount" step="0.01" required>
 				</label>
 				<label>
@@ -59,6 +60,29 @@
 		</div>
 		
 	<button type ="button" id="addPaycheckBtn">Add another paycheck</button><br><br>
+	<br><br><br>
+	<!--input costs-->
+	<div id= "costs-container">
+			<div class ="cost-row" data-id="1">
+				<label> 
+					 Cost Amount: $
+					<input type ="number" name="costAmount" step="0.01" required>
+				</label>
+				<label>
+					Cost Name:
+					<input type="text" name="costName" required>
+				</label>
+				<button type ="button" class="removeCostBtn">Remove a cost</button><br><br>
+			</div>
+		</div>
+		
+	<button type ="button" id="addCostBtn">Add another cost</button><br><br>
+	
+	
+	
+	
+	
+	
 	<button type="submit">Calculate</button>
 	</form>
 </div>

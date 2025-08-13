@@ -1,4 +1,5 @@
 //Savings Goal Feature
+document.addEventListener('DOMContentLoaded', () => {	
 	document.getElementById("savingsForm").addEventListener("submit", function (e) {
 		e.preventDefault();
 		
@@ -37,6 +38,20 @@
 			`<strong> To save $${goalAmount.toFixed(2)} for "${goalName || "your goal"}" by ${goalDate.toDateString()}, <br>
 			You need to save $${perPeriod.toFixed(2)} ${frequency}.</strong>`;
 		
+		//Adds automatic savings row to wage spender costs
+		const autoSavingsContainer = document.getElementById('auto-savings-row');
+		autoSavingsContainer.innerHTML =`
+			<div class ="paycheck-row auto-savings">
+				<label>
+					Paycheck Amount: 
+					<input type="number" name="paycheckAmount" step="0.01" value="${perPeriod.toFixed(2)}" readonly>
+				</label>
+				<label>
+					Paycheck Source: 
+					<input type="text" name="paycheckSource" value="Savings" readonly>
+				</label>
+			</div>
+		`;	
 	});
 
 //Wage Spender Feature
@@ -52,7 +67,7 @@
 		newPaycheckRow.className = 'paycheck-row';
 		newPaycheckRow.innerHTML = `
 		<label> 
-			Paycheck Amount:
+			Paycheck Amount: $
 			<input type="number" name="paycheckAmount" step="0.01" required>
 		</label>
 		<label>
@@ -177,4 +192,4 @@
 		
 		localStorage.setItem('costs', JSON.stringify(costs));
 		});
-	
+});

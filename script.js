@@ -39,19 +39,27 @@ document.addEventListener('DOMContentLoaded', () => {
 			You need to save $${perPeriod.toFixed(2)} ${frequency}.</strong>`;
 		
 		//Adds automatic savings row to wage spender costs
-		const autoSavingsContainer = document.getElementById('auto-savings-row');
-		autoSavingsContainer.innerHTML =`
-			<div class ="paycheck-row auto-savings">
+		const costsContainer = document.getElementById('costs-container');
+		let autoSavingsRow = costsContainer.querySelector('.auto-savings-cost');
+		
+		if (!autoSavingsRow) {
+			autoSavingsRow = document.createElement('div');
+			autoSavingsRow.className = 'cost-row auto-savings-cost';
+			autoSavingsRow.innerHTML = `
 				<label>
-					Paycheck Amount: 
-					<input type="number" name="paycheckAmount" step="0.01" value="${perPeriod.toFixed(2)}" readonly>
+					Cost Amount: $
+					<input type ="number" name ="costAmount" step="0.01" value="${perPeriod.toFixed(2)}" readonly>
 				</label>
 				<label>
-					Paycheck Source: 
-					<input type="text" name="paycheckSource" value="Savings" readonly>
+					Cost Name: 
+					<input type="text" name="costName" value="Savings for ${goalName || 'Goal'}" readonly>
 				</label>
-			</div>
-		`;	
+			`;
+			costsContainer.prepend(autoSavingsRow);
+		}else {
+			autoSavingsRow.querySelector('input[name="costAmount"]').value = perPeriod.toFixed(2);
+			autoSavingsRow.querySelector('input[name="costName"]').value= `Savings for ${goalName || 'Goal'}`;
+		}
 	});
 
 //Wage Spender Feature

@@ -13,7 +13,7 @@ function showPage(pageId) {
 //listening for navigation buttons
 document.querySelectorAll('.nav-button').forEach(button => {
 	button.addEventListener('click', () => {
-		const pageId = button.getAttributes('data-page');
+		const pageId = button.getAttribute('data-page');
 		showPage(pageId);
 	});
 });

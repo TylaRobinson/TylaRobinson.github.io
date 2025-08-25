@@ -158,8 +158,16 @@ document.addEventListener('DOMContentLoaded', () => {
 		
 		localStorage.setItem('costs', JSON.stringify(costs));
 		
+		//calculation
 		const remainingBalance = totalPaychecks - totalCosts;
-		balanceResult.innerHTML = `<h3> Remaining Balance: $${remainingBalance.toFixed(2)}</h3>`;
+		
+		if (remainingBalance === 0){
+			balanceResult.innerHTML = `<h2> Remaining Balance: $${remainingBalance.toFixed(2)}</h2> <br> <h3> Uh oh! You can't afford any of your wants this payperiod. Keep saving! </h3>`;
+			} else if (remainingBalance < 0){
+				balanceResult.innerHTML = `<h2> Remaining Balance: $${remainingBalance.toFixed(2)}</h2> <br> <h3> Oh no! You are in a deficit and need to get some more money ASAP, or cut costs! </h3>`;
+			} else {
+				balanceResult.innerHTML = `<h2> Remaining Balance: $${remainingBalance.toFixed(2)}</h2> <br> <h3> You can spend this remaining balance on your "wants" </h3>`;
+			}
 	});
 
 	//costs part

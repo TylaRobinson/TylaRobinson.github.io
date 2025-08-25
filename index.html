@@ -9,86 +9,100 @@
 		margin: 0px;
 		background-color: #45BBBD;
 	}
-	
-	.SavingsGoal{
-		
+	.page-container {
+		display: none;
+		padding: 20px;
+	}
+	#home-page 
+		display: block;
+	}
+	.nav-button {
+		display: block;
+		margin: 20px auto;
+		padding 15p 30px;
+		font-size: 1.2em;
+		cursor: pointer;
 	}
 		
-		
-	</style>
-	
-	
-	
-	
+	</style>	
 </head>
 <body>
-	<div id = "SavingsGoal">
-	<form id="savingsForm">
-		<label>What is your savings goal? $<input type="number" id="goalAmount" required></label> <br><br>
-		<label>What is this money for? <input type="text" id="goalName" required></label> <br><br>
-		<label>When do you aim to have this money by? <input type="date" id="goalDate" required></label> <br><br>
-		<label>How often do you earn money?
-			<select id="frequency">
-				<option value="weekly">Weekly</option>
-				<option value="fortnightly">Fortnightly</option>
-				<option value="monthly">Monthly</option>
-			</select>
-		</label><br><br>
-		<button type ="submit">Calculate</button>
-	</form>
+	<div id="home-page">
+		<h1> Welcome to Your Savings Buddy </h1>
+		<button class ="nav-button" data-page="savings-page"> Set a Savings Goal </button>
+		<button class ="nav-button" data-page="wage-page"> Plan your Spendings </button>
 	</div>
-	
+
+
+	<div id ="savings-page" class="page-container">
+		<button class="nav-button" data-page="home-page">Go Back</button>
+		<div id="SavingsGoal">
+			<form id="savingsForm">
+				<label>What is your savings goal? $<input type="number" id="goalAmount" required></label> <br><br>
+				<label>What is this money for? <input type="text" id="goalName" required></label> <br><br>
+				<label>When do you aim to have this money by? <input type="date" id="goalDate" required></label> <br><br>
+				<label>How often do you earn money?
+					<select id="frequency">
+						<option value="weekly">Weekly</option>
+						<option value="fortnightly">Fortnightly</option>
+						<option value="monthly">Monthly</option>
+					</select>
+				</label><br><br>
+				<button type ="submit">Calculate</button>
+			</form>
+		</div>
+	</div>
+		
 	<div id="result">
 	
 	</div>
+	
 <br><br><br><br><br><br><br><br>
-	<div id = "WageSpender">
-	<form id="spendingsForm">
-		<!--input paychecks-->
-		<div id= "paychecks-container">
-			<div class ="paycheck-row" data-id="1">
-				<label> 
-					Paycheck Amount: $ 
-					<input type ="number" name="paycheckAmount" step="0.01" required>
-				</label>
-				<label>
-					Paycheck Source:
-					<input type="text" name="paycheckSource" required>
-				</label>
-				<button type ="button" class="removePaycheckBtn">Remove a paycheck</button><br><br>
-			</div>
-		</div>
+	<div id="wage-page" class="page-container">
+	<button class="nav-button" data-page="home-page">Go Back</button>
+		<div id="WageSpender">
+			<form id="spendingsForm">
+			<!--input paychecks-->
+				<div id= "paychecks-container">
+					<div class ="paycheck-row" data-id="1">
+						<label> 
+							Paycheck Amount: $ 
+							<input type ="number" name="paycheckAmount" step="0.01" required>
+						</label>
+						<label>
+							Paycheck Source:
+							<input type="text" name="paycheckSource" required>
+						</label>
+						<button type ="button" class="removePaycheckBtn">Remove a paycheck</button><br><br>
+					</div>
+				</div>
 		<!-- adds automatic 'savings' row from savings goal -->
-		<div id="auto-savings-row">
-		</div>
+				<div id="auto-savings-row">
+				
+				</div>
 		
-	<button type ="button" id="addPaycheckBtn">Add another paycheck</button><br><br>
-	<br><br><br>
-	<!--input costs-->
-	<div id= "costs-container">
-			<div class ="cost-row" data-id="1">
-				<label> 
-					 Cost Amount: $
-					<input type ="number" name="costAmount" step="0.01" required>
-				</label>
-				<label>
-					Cost Name:
-					<input type="text" name="costName" required>
-				</label>
-				<button type ="button" class="removeCostBtn">Remove a cost</button><br><br>
-			</div>
-		</div>
+				<button type ="button" id="addPaycheckBtn">Add another paycheck</button><br><br>
+				<br><br><br>
+				<!--input costs-->
+				<div id= "costs-container">
+					<div class ="cost-row" data-id="1">
+						<label> 
+							Cost Amount: $
+							<input type ="number" name="costAmount" step="0.01" required>
+						</label>
+						<label>
+							Cost Name:
+							<input type="text" name="costName" required>
+						</label>
+						<button type ="button" class="removeCostBtn">Remove a cost</button><br><br>
+					</div>
+				</div>
 		
-	<button type ="button" id="addCostBtn">Add another cost</button><br><br>
-	
-	
-	
-	
-	
-	
-	<button type="submit">Calculate</button>
-	</form>
-</div>
+				<button type ="button" id="addCostBtn">Add another cost</button><br><br>
+				<button type="submit">Calculate</button>
+			</form>
+		</div>
+	</div>
 
 <div id ="balanceResult"></div>
 	

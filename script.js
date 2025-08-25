@@ -1,3 +1,24 @@
+//page navigation
+function showPage(pageId) {
+	const pages = document.querySelectorAll('.page-container, #home-page');
+	pages.forEach(page => {
+		if(page.id === pageId) {
+			page.style.display = 'block';
+		} else {
+			page.style.display = 'none';
+		}
+	});
+}
+
+//listening for navigation buttons
+document.querySelectorAll('.nav-button').forEach(button => {
+	button.addEventListener('click', () => {
+		const pageId = button.getAttributes('data-page');
+		showPage(pageId);
+	});
+});
+
+
 //Savings Goal Feature
 document.addEventListener('DOMContentLoaded', () => {	
 	document.getElementById("savingsForm").addEventListener("submit", function (e) {

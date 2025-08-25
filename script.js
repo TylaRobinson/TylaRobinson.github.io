@@ -116,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		
 		const paychecks = [];
 		const paycheckRows = paychecksContainer.querySelectorAll('.paycheck-row');
+		let totalPaychecks = 0;
 		
 		paycheckRows.forEach(row => {
 			const amountInput = row.querySelector('input[name="paycheckAmount"]');
@@ -129,11 +130,37 @@ document.addEventListener('DOMContentLoaded', () => {
 					amount: amount,
 					source: source
 				});
+				totalPaychecks += amount;
 			}
 		});
 		
 		localStorage.setItem('paychecks', JSON.stringify(paychecks));
+		
+		const costs = [];
+		const costRows = costsContainer.querySelectorAll('.cost-row');
+		let totalCosts = 0;
+		
+		costRows.forEach(row => {
+			const amountInput = row.querySelector('input[name="costAmount"]');
+			const nameInput = row.querySelector('input[name="costName"]');
+			
+			const amount = parseFloat(amountInput.value);
+			const name = nameInput.value;
+			
+			if(!isNaN(amount) && name) {
+				costs.push({
+					amount: amount,
+					name: name
+				});
+				totalCosts += amount;
+			}
 		});
+		
+		localStorage.setItem('costs', JSON.stringify(costs));
+		
+		const remainingBalance = totalPaychecks - totalCosts;
+		balanceResult.innerHTML = `<h3> Remaining Balance: $${remainingBalance.toFixed(2)}</h3>`;
+	});
 
 	//costs part
 	const costsContainer = document.getElementById('costs-container');

@@ -5,9 +5,10 @@
 	"display": "standalone",
 	"icons": [
 		{
-		"src": "images/512.png",
+		"src": "images/robot.png",
 		"type": "image/png",
 		"sizes": "512x512"
+
 		}
 	]
 }

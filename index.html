@@ -13,7 +13,7 @@
 		display: none;
 		padding: 20px;
 	}
-	#home-page 
+	#home-page {
 		display: block;
 	}
 	.nav-button {
@@ -30,8 +30,11 @@
 	<div id="home-page">
 		<img src="robot.png" style ="width:250px; height: 200px;">
 		<h1> Welcome to Your Savings Buddy </h1>
-		<button class ="nav-button" data-page="savings-page"> Set a Savings Goal </button>
-		<button class ="nav-button" data-page="wage-page"> Plan your Spendings </button>
+		
+		<div id ="saved-goal-display"> </div>
+		
+		<button class ="nav-button" data-page="savings-page"> My Savings Goal </button>
+		<button class ="nav-button" data-page="wage-page"> My Wages </button>
 	
 	</div>
 
@@ -53,10 +56,7 @@
 				<button type ="submit">Calculate</button>
 			</form>
 		</div>
-	</div>
-		
-	<div id="result">
-	
+		<div id="result"></div>
 	</div>
 	
 	<div id="wage-page" class="page-container">
@@ -103,9 +103,10 @@
 				<button type="submit">Calculate</button>
 			</form>
 		</div>
+		<div id ="balanceResult"></div>
 	</div>
 
-<div id ="balanceResult"></div>
+
 	
 	<script src="script.js"></script>
 </body>

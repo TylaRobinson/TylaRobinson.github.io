@@ -18,12 +18,31 @@ document.querySelectorAll('.nav-button').forEach(button => {
 	});
 });
 
+//Displays savings goal on home page
+function displaySavedGoal() {
+	const savedGoalDisplay = document.getElementById('saved-goal-display');
+	const goalAmount = localStorage.getItem('goalAmount');
+	
+	if (goalAmount){
+		savedGoalDisplay.innerHTML = `
+			<h3> My Goal: $${parseFloat(goalAmount).toFixed(2)}</h3>
+		`;
+	}else{
+		savedGoalDisplay.innerHTML = `
+			<h3> Your Savings Goal </h3>
+			<p> You haven't set a goal yet. Click "My Savings Goal" to get started! </p>
+		`;
+	}
+}
+
+
 
 //Savings Goal Feature
 document.addEventListener('DOMContentLoaded', () => {	
+	displaySavedGoal();
+	
 	document.getElementById("savingsForm").addEventListener("submit", function (e) {
 		e.preventDefault();
-		
 		 //saves to local storage
 		const goalAmount = parseFloat(document.getElementById("goalAmount").value);
 		localStorage.setItem("goalAmount", goalAmount);
@@ -54,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		const perPeriod = goalAmount / periods; 
 		
+		
 		//output
 		document.getElementById("result").innerHTML = 
 			`<strong> To save $${goalAmount.toFixed(2)} for "${goalName || "your goal"}" by ${goalDate.toDateString()}, <br>
@@ -81,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			autoSavingsRow.querySelector('input[name="costAmount"]').value = perPeriod.toFixed(2);
 			autoSavingsRow.querySelector('input[name="costName"]').value= `Savings for ${goalName || 'Goal'}`;
 		}
+		displaySavedGoal();
 	});
 
 //Wage Spender Feature

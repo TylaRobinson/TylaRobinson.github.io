@@ -19,22 +19,48 @@
 	.nav-button {
 		display: block;
 		margin: 20px auto;
-		padding 15p 30px;
+		padding: 15px 30px;
 		font-size: 1.2em;
 		cursor: pointer;
 	}
-		
+	#robot-img{
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 8vw;
+	}
+	
+	h1 {
+		text-align: center;
+	}
+	
+	#saved-goal-display{
+		text-align: center;
+	}
+	
+	#button-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 10px;
+		margin: 20px auto;
+		max-width: 400px;
+	}
+	
 	</style>	
 </head>
 <body>
 	<div id="home-page">
-		<img src="robot.png" style ="width:250px; height: 200px;">
+		<img id="robot-img" src="robot.png" style ="width:200px; height: 220px;">
 		<h1> Welcome to Your Savings Buddy </h1>
 		
 		<div id ="saved-goal-display"> </div>
 		
+		<div id ="button-grid">
 		<button class ="nav-button" data-page="savings-page"> My Savings Goal </button>
 		<button class ="nav-button" data-page="wage-page"> My Wages </button>
+		<button class ="nav-button" data-page="new-page"> Do I need this? </button>
+		<button class ="nav-button" data-page="new-page"> My Wishlist </button>
+		</div>
 	
 	</div>
 

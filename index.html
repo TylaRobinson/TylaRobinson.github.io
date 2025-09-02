@@ -3,11 +3,27 @@
 <html lang = "en">
 <head>
 	<title>  </title>
+	<!--heading font-->
 	<link rel ="manifest" href="manifest.json"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+	<!--body font-->
+	
+	
+	
 	<style>
+	:root{
+		--white: #FAF9F6;
+		--green: #50C878;
+		--forest: #769260;
+		--brown: #8B5E3C;
+		--lightgreen: #C5E3BF;
+	}
+	
 	body {
 		margin: 0px;
-		background-color: #45BBBD;
+		background-color: var(--white);
 	}
 	.page-container {
 		display: none;
@@ -32,6 +48,8 @@
 	
 	h1 {
 		text-align: center;
+		font-family: "Orbitron", sans-serif;
+		
 	}
 	
 	#saved-goal-display{
@@ -45,6 +63,18 @@
 		margin: 20px auto;
 		max-width: 400px;
 	}
+	
+	#saved-goal-display {
+		display: block;
+		min-height: 50px;
+		margin: 20px auto;
+		max-width: 400px;
+		padding: 20px;
+		background-color: var(--green);
+		border: 1px solid var(--lightgreen);
+		border-radius: 8px;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		}
 	
 	</style>	
 </head>

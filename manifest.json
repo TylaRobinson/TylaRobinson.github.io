@@ -3,6 +3,7 @@
 	"short_name": "My Savings Buddy", 
 	"start_url": "index.html",
 	"display": "standalone",
+	 "background_color": "#FAF9F6"
 	"icons": [
 		{
 		"src": "robot.png",

@@ -17,7 +17,6 @@ document.querySelectorAll('.nav-button').forEach(button => {
 		showPage(pageId);
 	});
 });
-
 //Displays savings goal on home page
 function displaySavedGoal() {
 	const savedGoalDisplay = document.getElementById('saved-goal-display');

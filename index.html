@@ -27,7 +27,7 @@
 	}
 	.page-container {
 		display: none;
-		padding: 20px;
+		padding: 0px;
 	}
 	#home-page {
 		display: block;
@@ -86,6 +86,108 @@
 		font-family: "Orbitron", sans-serif;
 		color: var(--lightgreen);
 		}
+	#savings-page{
+			font-family: "Inter", sans-serif;
+			color: var(--brown);
+	}	
+	.page-header {
+		display: flex; /* using flexbox for horizontal alignment */
+		align-items: center;
+		gap: 5px; /* space between img and text */
+		margin-bottom: 0px;
+	}
+	.page-header img{
+		width: 80px; /* adjusts size of robot */
+		height: auto;
+		margin: 0;
+	}
+	.page-header h1{
+		text-align: left;
+		margin: 0;
+		font-family: "Orbitron", sans-serif;
+		color: var(--green);
+	}
+	h2{
+		text-align: left;
+		font-family: "Orbitron", sans-serif;
+		color: var(--brown);
+		margin: 0;
+		font-size: 1.5em;
+	}
+	.page-content-container{
+		display: flex; /* pushes back button to the bottom */
+		flex-direction: column;
+		min-height: calc(100vh - 40px); /* Adjusts height to fill screen/flexible */
+	
+	}
+	#savingsForm {
+		flex-grow: 1; /* form grows and pushes button down */
+		margin-bottom: 20px;
+	}
+	.form-field {
+		margin-bottom: 20px;
+	}
+	label {
+		display: block;
+		font-family: "Inter", sans-serif;
+		color: var(--forest);
+		margin-bottom: 5px;
+	}
+	input, select {
+		width: 100%;
+		padding: 10px;
+		border: 1px solid var(--forest);
+		border-radius: 5px;
+		font-family: "Inter", sans-serif;
+		box-sizing: border-box;
+	}
+	#back-button {
+		align-self: flex-start;
+		border: none;
+		padding: 15px 30px;
+		font-size: 1.2em;
+		cursor: pointer;
+		font-family: "Inter", sans-serif;
+		background-color: var(--brown);
+		color: var(--white);
+		border-radius: 8px;
+		margin-top: auto;
+	}
+	#back-button:hover {
+		outline: 2px solid var(--brown);
+	}
+	/* styling the calculate button */
+	
+	.submit-button {
+		display: block;
+		width: 100%;
+		border: none;
+		padding: 15px 30px;
+		font-size: 1.2em;
+		cursor: pointer;
+		font-family: "inter", sans-serif;
+		background-color: var(--green);
+		color: var(--white);
+		border-radius: 8px;
+		margin-top: 20px;
+	}
+	.submit-button:hover {
+		outline: 2px solid var(--brown);
+	}
+	#result {
+		margin-top: 20px
+		padding: 15px;
+		background-color: var(--lightgreen);
+		border-radius: 8px;
+		text-align: center;
+		color: var(--brown);
+		font-family: "Inter", sans-serif;
+	}
+	#savingsGoal {
+		max-width: 20px;
+		margin: 0 auto;
+		padding: 0 10px;
+	}
 	</style>	
 </head>
 <body>
@@ -106,23 +208,30 @@
 
 
 	<div id ="savings-page" class="page-container">
-		<button class="nav-button" data-page="home-page">Go Back</button>
-		<div id="SavingsGoal">
-			<form id="savingsForm">
-				<label>What is your savings goal? $<input type="number" id="goalAmount" required></label> <br><br>
-				<label>What is this money for? <input type="text" id="goalName" required></label> <br><br>
-				<label>When do you aim to have this money by? <input type="date" id="goalDate" required></label> <br><br>
-				<label>How often do you earn money?
-					<select id="frequency">
-						<option value="weekly">Weekly</option>
-						<option value="fortnightly">Fortnightly</option>
-						<option value="monthly">Monthly</option>
-					</select>
-				</label><br><br>
-				<button type ="submit">Calculate</button>
-			</form>
+		<div class="page-content-container">
+			<div class = "page-header">
+				<img id="robot-img" src="robot.png" style ="width:200px; height: 220px;">
+				<h1> My Savings Buddy </h1>
+			</div>
+			<h2> Savings Goal </h2>
+			<div id="SavingsGoal">
+				<form id="savingsForm">
+					<label>What is your savings goal? $<input type="number" id="goalAmount" required></label> <br><br>
+					<label>What is this money for? <input type="text" id="goalName" required></label> <br><br>
+					<label>When do you aim to have this money by? <input type="date" id="goalDate" required></label> <br><br>
+					<label>How often do you earn money?
+						<select id="frequency">
+							<option value="weekly">Weekly</option>
+							<option value="fortnightly">Fortnightly</option>
+							<option value="monthly">Monthly</option>
+						</select>
+					</label><br><br>
+					<button type ="submit" class="submit-button">Calculate</button>
+				</form>
+			</div>
+			<div id="result"></div>
+			<button class="nav-button" data-page="home-page">Go Back</button>
 		</div>
-		<div id="result"></div>
 	</div>
 	
 	<div id="wage-page" class="page-container">
